@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>CALCULATOR</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+</head>
+
+<body>
+
+    <table id="calc" cellspacing="1">
+        <tr>
+            <td colspan="3"><input type="text" id="result" disabled="disabled" /></td>
+            <td><input type="button" class="btn" value="C" onclick="result.value = '' " /> </td>
+
+        </tr>
+        <tr>
+            <td><input type="button" class="btn" value="7" onclick="result.value += '7' " /></td>
+            <td><input type="button" class="btn" value="8" onclick="result.value += '8' " /></td>
+            <td><input type="button" class="btn" value="9" onclick="result.value += '9' " /></td>
+            <td><input type="button" class="btn op" value="+" onclick="result.value += '+' " /></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn" value="4" onclick="result.value += '4' " /></td>
+            <td><input type="button" class="btn" value="5" onclick="result.value += '5' " /></td>
+            <td><input type="button" class="btn" value="6" onclick="result.value += '6' " /></td>
+            <td><input type="button" class="btn" value="-" onclick="result.value += '-' " /></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn" value="1" onclick="result.value += '1' " /></td>
+            <td><input type="button" class="btn" value="2" onclick="result.value += '2' " /></td>
+            <td><input type="button" class="btn" value="3" onclick="result.value += '3' " /></td>
+            <td><input type="button" class="btn" value="*" onclick="result.value += '*' " /></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn" value="0" onclick="result.value += '0' " /></td>
+            <td><input type="button" class="btn" value="." onclick="result.value += '.' " /></td>
+            <td><input type="button" class="btn" id="equal" value="=" onclick="result.value=eval(result.value)" /></td>
+            <td><input type="button" class="btn" value="/" onclick="result.value += '/' " /></td>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>
