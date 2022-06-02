@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>CALCULATOR</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+</head>
+
+<body>
+
+    <table id="calc" cellspacing="1">
+        <tr>
+            <td colspan="3"><input type="text" id="result" disabled="disabled" /></td>
+            <td><input type="button" class="btn" value="C" onclick="result.value = '' " /> </td>
+
+        </tr>
+        <tr>
+            <td><input type="button" class="btn" value="7" id="btn7" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="8" id="btn8" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="9" id="btn9" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="+" id="btnplus" onclick=writevalue(id) /></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn" value="4" id="btn4" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="5" id="btn5" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="6" id="btn6" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="-" id="btnminus" onclick=writevalue(id) /></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn" value="1" id="btn1" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="2" id="btn2" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="3" id="btn3" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="*" id="btnmultiply" onclick=writevalue(id) /></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn" value="0" id="btn0" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" value="." id="btncomma" onclick=writevalue(id) /></td>
+            <td><input type="button" class="btn" id="btnequal" value="=" onclick="result.value=eval(result.value)" />
+            </td>
+            <td><input type="button" class="btn" value="/" id="btndivide" onclick=writevalue(id) /></td>
+        </tr>
+    </table>
+
+    <script src="js/logic.js"></script>
+</body>
+
+</html>

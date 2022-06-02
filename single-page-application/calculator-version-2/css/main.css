@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    border: 0;
+}
+
+#calc {
+    background-color: rgb(32, 28, 28);
+    font-size: 15px;
+
+}
+
+#result {
+    margin-left: 0.8rem;
+    background-color: rgb(32, 28, 28);
+    width: 13.8rem;
+    height: 2.2rem;
+    font-size: 2rem;
+}
+
+#btnequal {
+    background-color: rgba(19, 92, 97, 255);
+}
+
+#btnequal:hover {
+    background-color: rgba(3, 167, 178, 255);
+}
+
+.btn {
+    background-color: rgba(6, 6, 6, 255);
+    width: 5rem;
+    height: 3rem;
+}
+
+.btn:hover {
+
+    background-color: rgba(52, 52, 52, 255);
+}
