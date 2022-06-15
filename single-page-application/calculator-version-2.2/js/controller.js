@@ -1,3 +1,13 @@
+/* Muy buen trabajo, el diseño estético está realmente bueno.
+Las clases Calculator/CalculatorView van fuera de la función 
+startApplicationGUI(). Esta dentro sí hace la creación de las
+instancias y las utiliza, pero las clases hay que sacarlas afuera.
+
+El unico código que va dentro de esta función es esto:
+let calx = new CalculatorView();
+    document.body.appendChild(calx);
+*/
+
 function startApplicationGUI() {
 
 
