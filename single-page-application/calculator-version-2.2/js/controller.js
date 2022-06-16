@@ -7,7 +7,11 @@ El unico código que va dentro de esta función es esto:
 let calx = new CalculatorView();
     document.body.appendChild(calx);
 */
-// separar en 3.. controlador,vista,modelo
+/* separar en 3.. controlador,vista,modelo
+creo vista en controlador.. constructor(calculatorView)
+los eventos ejecutan la instancia de controlador.. controler.onclick1()
+
+*/
 
 function startApplicationGUI() {
 
