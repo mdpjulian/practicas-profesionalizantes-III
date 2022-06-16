@@ -7,7 +7,7 @@ El unico código que va dentro de esta función es esto:
 let calx = new CalculatorView();
     document.body.appendChild(calx);
 */
-
+// separar en 3.. controlador,vista,modelo
 
 function startApplicationGUI() {
 
@@ -20,9 +20,15 @@ class Calculator {
     }
 
     calculate(expression) {
+      try  {
         return eval(expression);
+      } catch (e) {
+        console.log('error');
+        alert('operacion invalida');
+        return '';
+      }
+        
     }
-
 }
 
 
