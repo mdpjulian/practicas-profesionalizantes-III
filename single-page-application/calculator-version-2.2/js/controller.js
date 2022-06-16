@@ -8,6 +8,7 @@ let calx = new CalculatorView();
     document.body.appendChild(calx);
 */
 
+
 function startApplicationGUI() {
 
     let calx = new CalculatorView();
