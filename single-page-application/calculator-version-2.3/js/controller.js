@@ -38,7 +38,6 @@ class CalculatorController{
 	
    writevalue(id) {
     this.view.display.value += document.getElementById(id).value;
-    //alert(id)
     }
     onButtonCalculateClick()
 	{
@@ -53,7 +52,6 @@ class CalculatorView extends HTMLElement {
         this.innerModel = model;
 		this.innerController = new CalculatorController(this,this.innerModel);
 
-        this.innerController;
 
         this.boton0 = document.createElement("input");
         this.boton1 = document.createElement("input");
