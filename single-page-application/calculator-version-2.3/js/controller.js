@@ -14,11 +14,6 @@ function startApplicationGUI() {
     let calculatorView = new CalculatorView(calculatorModel);
     document.body.appendChild(calculatorView);
 }
-
-function posicionarElementoEnTabla(tablaObj, nroFila, nroColumna, elemento) {
-    tablaObj.childNodes[0].childNodes[nroFila].childNodes[nroColumna].appendChild(elemento);
-}
-
 class CalculatorModel {
     constructor(){}
 
@@ -134,8 +129,8 @@ class CalculatorView extends HTMLElement {
         let primeraFila = this.tabla.insertRow();
         let displaybox = primeraFila.insertCell();
         displaybox.setAttribute("colspan", 3);
+        let Clearbox = primeraFila.insertCell();
 
-    
 
         for (let i = 0; i < 4; i++) {
             let filaActual = this.tabla.insertRow();
@@ -144,7 +139,6 @@ class CalculatorView extends HTMLElement {
                 filaActual.insertCell();
             }
         }
-
         //EVENTS
         for (let i = 0; i < 10; i++) {
             this.botonesNumericos[i].addEventListener("click", () => this.innerController.writevalue(this.botonesNumericos[i].id) );
@@ -195,5 +189,6 @@ class CalculatorView extends HTMLElement {
 }
 customElements.define('x-calculator', CalculatorView);
 
-
-
+function posicionarElementoEnTabla(tablaObj, nroFila, nroColumna, elemento) {
+    tablaObj.childNodes[0].childNodes[nroFila].childNodes[nroColumna].appendChild(elemento);
+}
