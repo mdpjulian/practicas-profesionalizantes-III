@@ -7,16 +7,30 @@ El unico código que va dentro de esta función es esto:
 let calx = new CalculatorView();
     document.body.appendChild(calx);
 */
-/* separar en 3.. controlador,vista,modelo
-creo vista en controlador.. constructor(calculatorView)
-los eventos ejecutan la instancia de controlador.. controler.onclick1()
 
-*/
 
 function startApplicationGUI() {
+    let calculatorModel = new CalculatorModel()
+    let calculatorView = new CalculatorView(calculatorModel);
+    document.body.appendChild(calculatorView);
+}
 
-    let calx = new CalculatorView();
-    document.body.appendChild(calx);
+function posicionarElementoEnTabla(tablaObj, nroFila, nroColumna, elemento) {
+    tablaObj.childNodes[0].childNodes[nroFila].childNodes[nroColumna].appendChild(elemento);
+}
+
+class CalculatorModel {
+    constructor(){}
+
+    calculate(expression) {
+      try{
+        return eval(expression);
+      } catch (e) {
+        console.log('error');
+        alert('operacion invalida');
+        return '';
+      }
+    }
 }
 
 class CalculatorController{
@@ -27,35 +41,24 @@ class CalculatorController{
 		this.model = calculatorModel;
 	}
 	
-  writevalue(id) {
+   writevalue(id) {
     this.view.display.value += document.getElementById(id).value;
-        }
-}
-
-
-
-
-class CalculatorModel {
-    constructor() {
-
+    //alert(id)
     }
-
-    calculate(expression) {
-      try  {
-        return eval(expression);
-      } catch (e) {
-        console.log('error');
-        alert('operacion invalida');
-        return '';
-      }
-        
-    }
+    onButtonCalculateClick()
+	{
+	  this.view.display.value = eval(this.model.calculate(this.view.display.value));
+	}
 }
-
 
 class CalculatorView extends HTMLElement {
-    constructor() {
+    constructor(model) {
         super();
+
+        this.innerModel = model;
+		this.innerController = new CalculatorController(this,this.innerModel);
+
+        this.innerController;
 
         this.boton0 = document.createElement("input");
         this.boton1 = document.createElement("input");
@@ -91,7 +94,7 @@ class CalculatorView extends HTMLElement {
             this.botonesALL[i].setAttribute("type", "button");
         }
 
-        //botones numericos
+        //botones numericos unicamente
         for (let i = 0; i < 10; i++) {
             this.botonesNumericos[i].id = `btn${i}`
             this.botonesNumericos[i].value = i;
@@ -123,7 +126,6 @@ class CalculatorView extends HTMLElement {
 
 
 
-
         //Creación de los elementos de layout
         this.tabla = document.createElement("table");
         this.tabla.id = "calc";
@@ -132,11 +134,8 @@ class CalculatorView extends HTMLElement {
         let primeraFila = this.tabla.insertRow();
         let displaybox = primeraFila.insertCell();
         displaybox.setAttribute("colspan", 3);
-        let Clearbox = primeraFila.insertCell();
 
-        posicionarElementoEnTabla(this.tabla, 0, 0, this.display);
-        posicionarElementoEnTabla(this.tabla, 0, 1, this.botonBorrar);
-
+    
 
         for (let i = 0; i < 4; i++) {
             let filaActual = this.tabla.insertRow();
@@ -146,32 +145,28 @@ class CalculatorView extends HTMLElement {
             }
         }
 
+        //EVENTS
         for (let i = 0; i < 10; i++) {
-            this.botonesNumericos[i].addEventListener("click", function () { this.innerController.writevalue(this.id) })
+            this.botonesNumericos[i].addEventListener("click", () => this.innerController.writevalue(this.botonesNumericos[i].id) );
         }
-        this.botonSuma.addEventListener("click", function () { this.innerController.writevalue(this.id) });
-        this.botonResta.addEventListener("click", function () { this.innerController.writevalue(this.id) });
-        this.botonMultiplicacion.addEventListener("click", function () { this.innerController.writevalue(this.id) });
-        this.botonDivision.addEventListener("click", function () { this.innerController.writevalue(this.id) });
-        this.botonDecimal.addEventListener("click", function () { this.innerController.writevalue(this.id) });
-        this.botonIgual.addEventListener("click", function () {
-            let calculator = new CalculatorModel();
-            display.value = calculator.calculate(this.innerController.display.value);
-            if (display.value == "undefined") this.innerControllerdisplay.value = "";
-        });
-        this.botonBorrar.addEventListener("click", function () { this.innerController.display.value = ""; });
+        this.botonSuma.addEventListener('click', () => this.innerController.writevalue(botonSuma.id) );
+        this.botonResta.addEventListener("click", () => this.innerController.writevalue(botonResta.id) );
+        this.botonMultiplicacion.addEventListener("click", () =>  this.innerController.writevalue(botonMultiplicacion.id) );
+        this.botonDivision.addEventListener("click",  () =>  this.innerController.writevalue(botonDivision.id) );
+        this.botonDecimal.addEventListener("click",  () =>  this.innerController.writevalue(botonDecimal.id) );
+        this.botonIgual.addEventListener("click", ()=> this.innerController.onButtonCalculateClick());
+        this.botonBorrar.addEventListener("click", function () { display.value = ""; });
 
         
 
-        //Ubicar los elementos de la interfaz gráfica dentro del layout
-        //document.body.appendChild(display);
-        document.body.appendChild(this.tabla);
-        this.innerModel = new CalculatorModel;
-        this.innerController = new CalculatorController(this, this.innerModel);
+        
     }
     connectedCallback() {
 
         // Posicionando elementos en filas y columnas
+
+        posicionarElementoEnTabla(this.tabla, 0, 0, this.display);
+        posicionarElementoEnTabla(this.tabla, 0, 1, this.botonBorrar);
 
         posicionarElementoEnTabla(this.tabla, 1, 0, this.boton7);
         posicionarElementoEnTabla(this.tabla, 1, 1, this.boton8);
@@ -201,11 +196,4 @@ class CalculatorView extends HTMLElement {
 customElements.define('x-calculator', CalculatorView);
 
 
-function posicionarElementoEnTabla(tablaObj, nroFila, nroColumna, elemento) {
-    /*Acceso a una posición específica de la tabla (fila,columna)
-    tabla.childNodes[0].childNodes[nroFila]
-    tabla.childNodes[0].childNodes[nroFila].childNodes[nroColumna]*/
 
-    //Añade el elemento recibido
-    tablaObj.childNodes[0].childNodes[nroFila].childNodes[nroColumna].appendChild(elemento);
-}
