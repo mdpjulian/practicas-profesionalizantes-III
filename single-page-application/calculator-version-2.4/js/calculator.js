@@ -11,3 +11,4 @@ function startApplicationGUI() {
     document.body.appendChild(calculatorView);
 }
 
+window.addEventListener("load", startApplicationGUI)
