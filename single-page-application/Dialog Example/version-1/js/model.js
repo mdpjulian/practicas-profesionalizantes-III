@@ -1,36 +1,34 @@
-class ModelDialog extends HTMLElement
+class ModalDialog extends HTMLElement
 { 
-  constructor()
-  {
+  constructor(){
     super();
     this.innerContext = document.createElement('div');
-    this.confirm = document.createElement('button');
-    this.confirm.innerText = 'Confirm';
+    this.confirmButton = document.createElement('button');
+    this.confirmButton.innerText = 'Confirm';
     
-    this.cancel = document.createElement('button');
-    this.cancel.InnerText= 'Cancel';
+    this.cancelButton = document.createElement('button');
+    this.cancelButton.innerText= 'Cancel';
   }
     
-    
-  connectCallback() {
-      this.appendChild(this.innerContext);
-      this.appendChild(this.confirm);
-      this.appendChild(this.cancel);
+  connectedCallback() {
+    this.appendChild(this.innerContext);
+    this.appendChild(this.confirmButton);
+    this.appendChild(this.cancelButton);
       
-      this.cancel.addEventListener('click', ()=>this.hide())
-      this.cancel.addEventListener('click', ()=>this.hide())
-    }
+    this.confirmButton.addEventListener('click', () => this.hide());
+    this.cancelButton.addEventListener('click', () => this.hide());
+  }
   disconnectCallback(){
-      
-    }
+    this.confirmButton.removeEventListener('click', () => this.hide());
+    this.cancelButton.removeEventListener('click', () => this.hide());
+  }
   show(){
-      this.style.display= 'black';
-    }
+      this.style.display= 'block';
+  }
   hide(){
       this.style.display= 'none';
-    }
+  }
   
 }
-  customElements.define('x-dialog', ModelDialog);
-  
-export {ModelDialog}
+customElements.define('x-dialog', ModalDialog);
+export {ModalDialog}
