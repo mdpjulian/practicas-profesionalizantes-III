@@ -1,11 +1,11 @@
-//import {ModelDialog} from 'js/model.js'
-alert('main js')
+import {ModalDialog} from './modalDialog.js'
 
-function test(){
-  alert('testt');
-}
+
 function main(){
-  alert('main function');
-  let dialogModel = new ModelDialog();
-    document.body.appendChild(dialogModel);
+
+  let dialogModal = new ModalDialog();
+  document.body.appendChild(dialogModal);
+
 };
+
+window.addEventListener("load", main);
