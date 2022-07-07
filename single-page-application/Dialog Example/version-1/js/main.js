@@ -1,4 +1,4 @@
-import {ModalDialog} from './model.js'
+import {ModalDialog} from './modal.js'
 
 
 function main(){
