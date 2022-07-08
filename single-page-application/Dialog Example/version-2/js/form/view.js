@@ -19,14 +19,6 @@ class FormView extends HTMLElement {
 
       this.submitButton = document.createElement('button');
       this.submitButton.innerText = 'submit';
-
-
-      /*
-      this.remwmberPassword= document.createElement('input');
-      this.usernameInput.type='checkbox';
-      this.usernameInput.placeholder = 'Password';
-      mal implementado
-      */
     
     }
     connectedCallback() {

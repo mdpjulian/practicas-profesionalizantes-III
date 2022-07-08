@@ -8,9 +8,9 @@ class ModalDialog extends HTMLElement
     this.innerContext = document.createElement('div');
     this.innerContext.className = "w3-container";
 
-    this.confirmButton = document.createElement('button');
-    this.confirmButton.innerText = 'Open Form';
-    this.confirmButton.classList.add('w3-button', 'w3-black');
+    this.openFormButton = document.createElement('button');
+    this.openFormButton.innerText = 'Open Form';
+    this.openFormButton.classList.add('w3-button', 'w3-black');
     
     this.divModal = document.createElement('div');
     this.divModal.id = "id01";
@@ -44,18 +44,20 @@ class ModalDialog extends HTMLElement
     
   connectedCallback() {
     this.appendChild(this.innerContext);
-    this.appendChild(this.confirmButton);
+    this.appendChild(this.openFormButton);
       
-    this.confirmButton.addEventListener('click', () => this.showModal());
+    this.openFormButton.addEventListener('click', () => this.showModal());
+
+    this.innerFormView.submitButton.addEventListener('click', () => this.exitModal());
     this.innerExitSpan.addEventListener('click', () => this.exitModal());
   }
   showModal(){
       this.divModal.style.display = 'block';
-      this.confirmButton.style.display = 'none';
+      this.openFormButton.style.display = 'none';
   }
   exitModal(){
     this.divModal.style.display = 'none';
-    this.confirmButton.style.display = 'block';
+    this.openFormButton.style.display = 'block';
   }
   
 }
