@@ -39,6 +39,6 @@ function calculate( $expression )
 $response = calculate($input);
 
 //---------------------------------------------JSON Response ---------------------------------------
-echo json_encode( 'Fuera de servicio' );
+echo json_encode( $response );
 
 ?>

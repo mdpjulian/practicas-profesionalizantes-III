@@ -111,6 +111,9 @@ class CalculatorView extends HTMLElement {
     connectedCallback() {
 
         // Posicionando elementos en filas y columnas
+        function posicionarElementoEnTabla(tablaObj, nroFila, nroColumna, elemento) {
+            tablaObj.childNodes[0].childNodes[nroFila].childNodes[nroColumna].appendChild(elemento);
+        }
 
         posicionarElementoEnTabla(this.tabla, 0, 0, this.display);
         posicionarElementoEnTabla(this.tabla, 0, 1, this.botonBorrar);
