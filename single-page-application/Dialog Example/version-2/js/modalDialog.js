@@ -17,7 +17,7 @@ class ModalDialog extends HTMLElement
     this.divModal.className ="w3-modal";
 
     this.innerModalContent = document.createElement('div');
-    this.innerModalContent.className = "w3-modal-content";
+    this.innerModalContent.classList.add( "w3-modal-content", "w3-blue", 'w3-display-topmiddle', 'w3-center');
 
     this.innerModalContentContainer = document.createElement('div');
     this.innerModalContentContainer.className = "w3-container";

@@ -19,6 +19,7 @@ class FormView extends HTMLElement {
 
       this.submitButton = document.createElement('button');
       this.submitButton.innerText = 'submit';
+       this.submitButton.classList.add('w3-button', 'w3-black', 'w3-block', 'w3-margin-bottom', 'w3-margin-top');
     
     }
     connectedCallback() {
