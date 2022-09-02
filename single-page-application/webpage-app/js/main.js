@@ -1,13 +1,13 @@
-import {webAppView} from './web-App/view.js'
-import {webAppModel} from './web-App/model.js'
+import {webAppView} from './webApp/view.js'
+import {webAppModel} from './webApp/model.js'
 
 
 function main(){
 
   let wModel = new webAppModel();
 
-  let wAppView = new webAppView(wModel);
-  document.body.appendChild(wAppView);
+  let wView = new webAppView(wModel);
+  document.body.appendChild(wView);
 
 };
 

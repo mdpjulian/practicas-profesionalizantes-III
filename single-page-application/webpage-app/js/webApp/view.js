@@ -1,4 +1,4 @@
-import { webAppController } from "./web-App/controller.js";
+import { webAppController } from "./controller.js";
 
 class webAppView extends HTMLElement {
     constructor(model) {
@@ -23,7 +23,7 @@ class webAppView extends HTMLElement {
     this.closeLink = document.createElement('a');
     this.closeLink.className = "w3-bar-item w3-button w3-hide-large w3-large";
     this.closeLink.href = "javascript:void(0)"
-    this.closeLink.addEventListener("click", w3_close())
+    this.closeLink.addEventListener("click", w3_close)
     this.closeLink.innerText = "Close";
     this.closeImg = document.createElement('i');
     this.closeImg.className = "fa fa-remove"
@@ -131,7 +131,7 @@ class webAppView extends HTMLElement {
     }
 }
     
-customElements.define('x-webAppView', webAppView);
+customElements.define('x-customwebview', webAppView);
 
 // Open and close the sidebar on medium and small screens
 function w3_open() {
