@@ -1,4 +1,5 @@
 import { webAppController } from "./controller.js";
+import {acordionList} from "../acordionList/view.js"
 
 class webAppView extends HTMLElement {
   constructor(model) {
@@ -6,6 +7,17 @@ class webAppView extends HTMLElement {
       this.innerModel = model;
       this.innerController = new webAppController(this,this.innerModel);
 
+      //  new Acordion list class instance
+      this.innerAcordionList = new acordionList();
+      this.innerAcordionList.addItem("Item 1");
+      this.innerAcordionList.addItem("Item 2");
+      let acordion2 = this.innerAcordionList.addAcordionList();
+      acordion2.addItem("SubItem 1");
+      acordion2.addItem("SubItem 2");
+      this.innerAcordionList.addItem("Item 3");
+
+      // ...
+      // .....
       
 
       this.nav = document.createElement('nav');
@@ -50,10 +62,7 @@ class webAppView extends HTMLElement {
       this.Link4.href = "#";
       this.Link4.innerText = "Link 4";
 
-      //  new Acordion list class instance
-      this.divAcordion = document.createElement('div');
-      // ...
-      // .....
+      
 
       this.w3overlay = document.createElement('div');
       this.w3overlay.className = "w3-overlay w3-hide-large w3-animate-opacity";
@@ -110,8 +119,8 @@ class webAppView extends HTMLElement {
       this.nav.appendChild(this.Link3);
       this.nav.appendChild(this.Link4);
 
-      //append acordion to nav here ..
-      //this.nav.appendChild(this.divAcordion);
+
+      this.nav.appendChild(this.innerAcordionList);
 
       document.body.appendChild(this.w3overlay);
       document.body.appendChild(this.w3main);
@@ -152,19 +161,6 @@ function myFunction() {
   } else {
     document.getElementById("myIntro").classList.remove("w3-show-inline-block");
     document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
-  }
-}
-
-// Accordions
-function myAccordion(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-theme";
-  } else { 
-    x.className = x.className.replace("w3-show", "");
-    x.previousElementSibling.className = 
-    x.previousElementSibling.className.replace(" w3-theme", "");
   }
 }
 
